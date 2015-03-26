@@ -1,0 +1,15 @@
+events {
+
+}
+
+http {
+
+    <% web_root = '/srv/mywebsite' %>
+    root <%= web_root %>;
+
+    server {
+        location /data {
+            alias <%= web_root %>/data/;
+        }
+    }
+}
