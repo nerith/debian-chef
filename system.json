@@ -1,0 +1,5 @@
+{
+    "name": "system_utils",
+    "description": "A simple recipe for vim and bash-completion",
+    "run_list": [ "recipe[system::vimbash]" ]
+}
