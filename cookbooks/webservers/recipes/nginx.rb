@@ -47,6 +47,7 @@ template '/etc/nginx/conf.d/nginx.conf' do
     mode   0640
     source 'nginx.conf.erb'
     notifies :stop, 'service[nginx]', :immediately
+    notifies :run, 'execute[load_conf]'
     notifies :reload, 'service[nginx]', :delayed
 end
 
@@ -54,4 +55,6 @@ end
 execute 'load_conf' do
   # Reload the configuration file
   command 'sudo nginx -c /etc/nginx/conf.d/nginx.conf'
+  action :nothing
+  notifies :restart, 'service[nginx]'
 end
